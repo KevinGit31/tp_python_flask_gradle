@@ -1,0 +1,1 @@
+[{"id":0,"name": "Scrabble","editor": "mattel","year_published": "1978","description":"descp","category": "family","time": "60min","number_player": "2-5"},{"id":1,"name": "Aventuriers du rail","editor": "asmodee","year_published": "2006","description": "descp","category": "family","time": "45min","number_player":"2-10"}]
