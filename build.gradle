@@ -1,0 +1,30 @@
+def majorVersion = System.getenv("MAJOR_VERSION") ?: "2"
+def minorVersion = System.getenv("MINOR_VERSION") ?: "0"
+version = majorVersion + "." + minorVersion
+
+task purge(type:Delete) {
+  //println 'Cleaning up old files'
+  delete 'build'
+}
+
+task dependances(type:Exec, dependsOn: purge) {
+    executable 'sh'
+    args '-c', 'pip install flask'
+    standardOutput = new ByteArrayOutputStream()
+    ext.output = { return standardOutput.toString() }
+}
+
+def tarfile = "application-" + version
+
+task packageDistribution(type: Zip, dependsOn: dependances) {
+    from ('src') { into '.' }
+    archiveFileName = tarfile + ".zip"
+    destinationDirectory = file("build")
+}
+
+task up(type:Exec, dependsOn: packageDistribution) {
+ executable 'sh'
+ args '-c', 'curl -v --user "admin:adminVagrant" --upload-file build/application-1.0.zip http://172.30.1.7:8081/repository/nexus-tp/application-python/application-1.0.zip'
+ standardOutput = new ByteArrayOutputStream()
+ ext.output = { return standardOutput.toString() }
+}

@@ -1,0 +1,2 @@
+def printtoto():
+    return "Salt"

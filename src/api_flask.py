@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-import manage_bd
+from src import manage_bd
 
 app = Flask(__name__)
 
