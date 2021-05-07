@@ -9,7 +9,7 @@ task purge(type:Delete) {
 
 task dependances(type:Exec, dependsOn: purge) {
     executable 'sh'
-    args '-c', 'pip install flask'
+    args '-c', 'pip3 install flask'
     standardOutput = new ByteArrayOutputStream()
     ext.output = { return standardOutput.toString() }
 }
