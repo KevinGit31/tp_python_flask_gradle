@@ -1,0 +1,18 @@
+pipeline {
+    agent any 
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
+            }
+            steps {
+                sh 'pip3 --version'
+            }
+        }
+        stage('testcode') {
+            steps {
+                sh 'python toto/totototo.py'
+            }
+        }
+    }
+}
