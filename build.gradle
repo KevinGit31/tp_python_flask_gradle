@@ -1,4 +1,4 @@
-def majorVersion = System.getenv("MAJOR_VERSION") ?: "2"
+def majorVersion = System.getenv("MAJOR_VERSION") ?: "1"
 def minorVersion = System.getenv("MINOR_VERSION") ?: "0"
 version = majorVersion + "." + minorVersion
 
